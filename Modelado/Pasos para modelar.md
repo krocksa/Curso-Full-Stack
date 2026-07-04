@@ -1,4 +1,4 @@
-###### PASOS:
+# PASOS
 
 1. Identificar las entidades.
 2. Identificar las reglas de negocio (operaciones CRUD).
@@ -14,7 +14,7 @@
 12. Crear el modelo relacional de la BD.
 13. Aplicar las 1FN, 2FN y 3FN.
 
-###### GLOSARIO:
+## GLOSARIO
 
 - **PK**: PRIMARY KEY
 - **FK**: FOREING KEY
