@@ -7,10 +7,6 @@
 - apellido_cliente: varchar[50]
 - teléfono: varchar[20] **UQ**
 - email: varchar[50] **UQ**
-- direccion_cliente: varchar[500]
-- codigo_postal: int
-- ciudad: varchar[50]
-- id_país: int **FK**
 
 ## Productos (CRUD) **ED|EC**
 
@@ -25,12 +21,17 @@
 - id_venta: int **PK**
 - id_cliente: int **FK**
 - id_estado: int **FK**
+- monto_venta: decimal
+- fecha_venta: date
 
-## País (CRUD) **EC**
+## Direcciones (CRUD) **EC**
 
-- id_pais: int **PK**
-- nombre_país: varchar[50]
-- dominio_país: varchar[10] **UQ**
+- id_direccion: int **PK**
+- calle_avenida: varchar[500]
+- ciudad: varchar[50]
+- pais: varchar[50]
+- dominio_país: varchar[10]
+- id_cliente: int **FK**
 
 ## Detalle_Venta (CRU) **EP**
 
@@ -46,8 +47,8 @@
 
 # 8 Relaciones:
 
-1. Un **cliente** pertenece a un **país**, y un **país** tiene **clientes** (1 - M)
-2. Una **cliente** hace **ventas** (1 - M)
+1. Un **cliente** tiene **direcciones** (1 - M)
+2. Un **cliente** hace **ventas** (1 - M)
 3. Una **venta** tiene **estados** (1 - M)
 4. Una **venta** tiene **detalles** (1 - M)
 5. Un **detalle** tiene **productos** (1 - M)
