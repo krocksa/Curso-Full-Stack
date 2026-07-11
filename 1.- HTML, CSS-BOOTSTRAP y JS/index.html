@@ -9,6 +9,10 @@
   <body>
     <h1 id="enc-1">Proyecto Full-Stack</h1>
     <p id="parrafo">Esto es un párrafo</p>
+    <div id="contenido"></div>
+    <ul id="frutas">
+      <h2 id="frutas-enc">Frutas</h2>
+    </ul>
     <ul id="list-des">
       <h2 id="comp-list-des-enc">Lista desordenada. Celulares:</h2>
       <li id="comp-list-des">Samsung Galaxy S26 Ultra</li>
@@ -26,21 +30,24 @@
     </ol>
     <form id="formulario" action="">
       <h2 id="enc-form">Formulario</h2>
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre" id="nombre" /><br />
-      <label for="emaail">Email:</label>
-      <input type="email" name="email" id="emaail" /><br />
-      <label for="selecciona">Selecciona tu lenguaje favorito:</label>
-      <select name="selecciona" id="selecciona">
-        <option value="">HTML</option>
-        <option value="">CSS</option>
-        <option value="">JAVASCRIPT</option>
-      </select>
-      <br />
-      <label for="comentarios">Déjanos saber tu opinión:</label>
-      <textarea name="comentarios" id="comentarios"></textarea><br />
-      <input type="reset" value="Refrescar Formulario" />
-      <input type="submit" name="enviar" value="Enviar" />
+      <div id="form-inside">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" /><br />
+        <label for="emaail">Email:</label>
+        <input type="email" name="email" id="emaail" /><br />
+        <label for="selecciona">Selecciona tu lenguaje favorito:</label>
+        <select name="selecciona" id="selecciona">
+          <option value="">HTML</option>
+          <option value="">CSS</option>
+          <option value="">JAVASCRIPT</option>
+        </select>
+        <br />
+        <label for="comentarios">Déjanos saber tu opinión:</label>
+        <textarea name="comentarios" id="comentarios"></textarea><br />
+        <input type="reset" value="Refrescar Formulario" />
+        <input type="submit" name="enviar" value="Enviar" />
+      </div>
     </form>
+    <script src="script.js"></script>
   </body>
 </html>
