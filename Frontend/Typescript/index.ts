@@ -67,26 +67,69 @@ type Usuario = {
   edad: number;
 }; */
 
-/* Forma 2: */
+/* Forma 2: 
 interface Usuario {
   nombre: string;
   edad: number;
 }
+*/
 
 let user: Usuario = {
   nombre: "Roger",
   edad: 34,
+  genero: "Masculino",
+  /*  rol: {
+    rol: "Admin"
+  } */
+  rol: "Admin",
 };
 
 let user1: Usuario = {
   nombre: "Francisca",
   edad: 56,
+  genero: "Femenino",
+  /*  rol: {
+    rol: "Dueña"
+  } */
+  rol: "Dueña",
 };
 
 let user2: Usuario = {
   nombre: "Yorgelis",
   edad: 29,
+  genero: 2,
+  /*  rol: {
+    rol: "Admin"
+  } */
+  rol: "Admin",
+};
+
+let user3: Usuario = {
+  nombre: "Caramelo",
+  edad: 27,
+  genero: undefined,
+  /*  rol: {
+    rol: "Bandid@"
+  } */
+  rol: "Bandid@",
 };
 
 //6.- Unión de tipos | Composición
-//00:29:15
+interface Usuario {
+  nombre: string;
+  edad: number;
+  genero: number | string | undefined;
+  rol: Rol;
+}
+
+/* Forma ineficiente
+ type Rol = {
+  rol: string;
+};
+ */
+
+//Forma ificiente:
+type Rol = "Dueña" | "Admin" | "Bandid@" | "";
+
+//7.- Diferencias entre Type e Interface
+//00:35:50
