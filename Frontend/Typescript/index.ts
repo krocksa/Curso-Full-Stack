@@ -39,18 +39,54 @@ function saludo(nombre?: string) {
 }
 
 let resultado = sumar(1, 5);
-console.log(resultado);
+/* console.log(`El resultado de la suma es: ${sumar}`); */
 
 //3.- Objetos
 
-let usuario: { nombre: string; edad: number; saludar: () => string } = {
+let usuario: { readonly nombre: string; edad: number; saludar: () => string } =
+  {
+    nombre: "Roger",
+    edad: 34,
+    saludar: () => {
+      return `Hola, soy ${nombre} y tengo ${edad} años de edad.`;
+    },
+  };
+
+//4.- Arrays
+
+let numeros: number[] = [1, 2, 3];
+let nombres: Array<string> = ["Roger", "Francisca", "Yorgelis"];
+let mezcla: (string | number)[] = [22, "Hola"];
+let arrayEspecífico: [string, number] = ["Roger", 24]; //No acepta más valores, ya que definimos una cantidad, tipos y orden de valores específico.
+
+//5.- Alias en Tipos
+
+/* Forma 1:
+type Usuario = {
+  nombre: string;
+  edad: number;
+}; */
+
+/* Forma 2: */
+interface Usuario {
+  nombre: string;
+  edad: number;
+}
+
+let user: Usuario = {
   nombre: "Roger",
   edad: 34,
-  saludar: () => {
-    return `Hola, soy ${nombre} y tengo ${edad} años de edad.`;
-  },
 };
 
-console.log(usuario.saludar());
+let user1: Usuario = {
+  nombre: "Francisca",
+  edad: 56,
+};
 
-//00:22:15
+let user2: Usuario = {
+  nombre: "Yorgelis",
+  edad: 29,
+};
+
+//6.- Unión de tipos | Composición
+//00:29:15
