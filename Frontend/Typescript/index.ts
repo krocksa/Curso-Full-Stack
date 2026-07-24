@@ -212,4 +212,29 @@ procesar(1);
 //valor es un tipo de dato amplio; con el narrowing, lo pudimos
 //convertir en un tipo de dato diferente, específico y seguro
 //dentro de cada condicional.
-//54:05
+
+type Perro = { ladrar: () => void };
+type Gato = { maullar: () => void };
+
+const hacerSonido = (animal: Perro | Gato) => {
+  if ("ladrar" in animal) {
+    animal.ladrar();
+  } else if ("maullar" in animal) {
+    animal.maullar();
+  }
+};
+
+function fecha(valor: Date | String) {
+  if (valor instanceof Date) {
+    valor.getDay();
+  } else if (valor instanceof String) {
+    valor.concat();
+  }
+}
+
+const ejemplo = (x: string | null) => {
+  if (x === null) return;
+  console.log(x.toUpperCase());
+};
+//Type guards
+//59:05
