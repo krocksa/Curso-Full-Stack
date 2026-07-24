@@ -319,4 +319,164 @@ funcionesDentroDeFunciones((msj) => {
 });
 
 //14.- Genéricos, Restricciones y keyof
-//1:11:50
+
+/* const identidad = <T>(a: T) => {
+  return a;
+}; */
+function identidad<T>(a: T) {
+  return a;
+}
+//La idea es que en tiempo de escritura,
+//definamos el tipo de dato que aceptará la función,
+//para evitar errores/ambigüedades
+
+identidad(1); //Puede generar ambigüedades
+identidad<number>(1); //Esta es la forma correcta
+identidad<string>("Esta es la forma correcta de usar los tipos genéricos.");
+
+//Otro ejemplo:
+
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
+
+type User = {
+  id: number;
+  name: string;
+};
+
+type Cart = {
+  total: number;
+  products: Product[];
+};
+
+type Pagination<T> = {
+  page: number;
+  nextPage: number;
+  previousPage: number;
+  data: T[];
+};
+
+//En vez de reescribir código, usamos Generics
+
+/* type PaginationUsers = {
+  page: number;
+  nextPage: number;
+  previousPage: number;
+  data: User[];
+};
+ */
+
+//Ahora con la misma función genérica,
+//podemos acceder a distintos tipos de datos.
+
+function getProducts(): Pagination<Product> {
+  return {
+    page: 1,
+    nextPage: 2,
+    previousPage: 0,
+    data: [
+      {
+        id: 1,
+        name: "I Phone 17 Pro Max",
+        price: 1200,
+      },
+      {
+        id: 2,
+        name: "Samsung Galaxy S26 Ultra",
+        price: 1200,
+      },
+    ],
+  };
+}
+
+function getUsers(): Pagination<User> {
+  return {
+    page: 1,
+    nextPage: 2,
+    previousPage: 0,
+    data: [
+      {
+        id: 1,
+        name: "Roger Salgado",
+      },
+      {
+        id: 2,
+        name: "Francisca Mendoza",
+      },
+    ],
+  };
+}
+
+function getCarts(): Pagination<Cart> {
+  return {
+    page: 1,
+    nextPage: 2,
+    previousPage: 0,
+    data: [
+      {
+        total: 0,
+        products: [],
+      },
+    ],
+  };
+}
+//Ahora veamos las Restricciones:
+//Forzamos a que ciertos métodos/características,
+//existan dentro de nuestro genérico.
+function longitud<T extends { length: number }>(valor: T) {
+  return valor.length;
+}
+
+longitud("Yo poseo el método length");
+longitud({ length: 1 });
+//Los valores que le pasamos a la función,
+//deben incluir el método length,
+//o se lo definimos a mano
+
+//Veamos keyof:
+
+const obtenerPropiedad = <T, K extends keyof T>(obj: T, key: K) => {
+  return obj[key];
+};
+//keyof nos lista las propiedades de T dentro de K.
+//En nuestro ejemplo, tenemos que key,
+//tiene ser una clave/método/etc de T.
+
+console.log(obtenerPropiedad({ id: 1, name: "Roger Salgado", age: 34 }, "age"));
+//Le pasamos un objeto, seguido de una de las claves del obejo
+//Por consola nos devuelve el valor de dicha clave.
+//Valida y evita ambigüedades en tiempo de escritura.
+
+let usuario1: User = {
+  id: 1,
+  name: "Roger Salgado",
+};
+type Key = keyof typeof usuario1;
+//Para poder usar "usuario1" como un tipo en el tipo Key,
+//le colocamos typeof para que typescript analice "usuario1",
+//extraiga su estructura,
+//y la convierta en un tipo de la forma:
+//{id: number; name: string;}
+//Ahora seguimos usando keyof normalmente.
+
+let keyUser: Key = "id";
+//Ahora mostramos por pantalla el valor de dicha clave:
+console.log(usuario1[keyUser]);
+
+const arrWithGenerics = <T>(arr: T[]): T[] => {
+  return arr;
+};
+
+let frutas: string[] = arrWithGenerics<string>(["Manzana", "Pera", "Cambur"]);
+
+console.log(frutas);
+
+frutas.forEach((fruta) => {
+  console.log(fruta);
+});
+
+//15.- Mapped types
+//1:29:23
