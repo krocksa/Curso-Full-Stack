@@ -479,4 +479,51 @@ frutas.forEach((fruta) => {
 });
 
 //15.- Mapped types
-//1:29:23
+//Mapear tipos con "in"
+
+type Usuarrio = {
+  nombre: string;
+  edad: number;
+  direccion: string;
+  sexo: "Masculino" | "Femenino";
+};
+
+type Optional = {
+  [K in keyof Usuarrio]?: Usuarrio[K];
+};
+
+//16.- Utily types
+//Manera más fácil de mapear tipos
+
+type Userr = {
+  nombre: string;
+  edad: number;
+  direccion: string;
+  sexo: "Masculino" | "Femenino";
+};
+
+type Optionaal = Partial<Userr>;
+//Hace que todos los campos sean opcionales
+
+type Requirido = Required<Optionaal>;
+//Hace que todos los campos sean obligatorios
+
+type SoloLectura = Readonly<Optionaal>;
+//Hace que todos los campos sean de sólo lectura
+
+type SoloDireccion = Pick<Usuarrio, "direccion" /* | "edad" */>;
+//Crea un tipo con las claves que le indiquemos,
+//tomando claves de otro tipo complejo.
+
+type OmitirDireccion = Omit<Usuarrio, "direccion" /* | "edad" */>;
+//Crea un tipo omitiendo las claves que le indiquemos,
+//tomando claves de otro tipo complejo.
+
+type Result = Promise<Usuarrio[]>;
+
+type PromesaEsperada = Awaited<Result>;
+//Extrae el valor de la promesa, si hay promesas anidadas,
+//va hasta el final y extrae todos los valores de las promesas.
+
+//17.- Conditional types
+//1:44:20
