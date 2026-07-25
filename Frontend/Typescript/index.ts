@@ -526,4 +526,19 @@ type PromesaEsperada = Awaited<Result>;
 //va hasta el final y extrae todos los valores de las promesas.
 
 //17.- Conditional types
-//1:44:20
+
+type EsString<T> = T extends string ? true : false;
+type Prueba = EsString<"Hola">;
+
+//18.- Infer
+//Es como hacer el Awaited, pero a mano.
+type Extraer<T> = T extends Promise<infer U> ? U : T;
+type Resultt = Promise<Usuarrio[]>;
+type Usuarrios = Extraer<Resultt>;
+
+type ObtenerRetorno<T> = T extends () => infer R ? R : never;
+type ReturnType = ObtenerRetorno<1>;
+type ReturnType1 = ObtenerRetorno<() => string[]>;
+
+//19.- Template Literals
+//1:52:40
