@@ -547,26 +547,35 @@ type Clase = `bg-${Color}`;
 
 //20.- POO
 
-class Useerr {
-  //Atributos
+class Persona {
   nombre: string;
   edad: number;
+
+  constructor(nombre: string, edad: number) {
+    this.edad = edad;
+    this.nombre = nombre;
+  }
+}
+class Useerr extends Persona {
+  //Atributos
+  correo: string;
 
   //Métodos
   getInfo(): void {
     console.log({
       nombre: this.nombre,
       edad: this.edad,
+      correo: this.correo,
     });
   }
 
   //Constructor
-  constructor(nombre: string, edad: number) {
-    this.edad = edad;
-    this.nombre = nombre;
+  constructor(nombre: string, edad: number, corro: string) {
+    super(nombre, edad);
+    this.correo = corro;
   }
 }
-const roger = new Useerr("Roger", 34);
+const roger = new Useerr("Roger", 34, "rogeryonatan@gmail.com");
 roger.getInfo();
 
-//2:05:20
+//2:09:50
