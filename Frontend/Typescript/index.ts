@@ -464,7 +464,7 @@ type Key = keyof typeof usuario1;
 
 let keyUser: Key = "id";
 //Ahora mostramos por pantalla el valor de dicha clave:
-console.log(usuario1[keyUser]);
+//console.log(usuario1[keyUser]);
 
 const arrWithGenerics = <T>(arr: T[]): T[] => {
   return arr;
@@ -472,11 +472,11 @@ const arrWithGenerics = <T>(arr: T[]): T[] => {
 
 let frutas: string[] = arrWithGenerics<string>(["Manzana", "Pera", "Cambur"]);
 
-console.log(frutas);
+/* console.log(frutas);
 
 frutas.forEach((fruta) => {
   console.log(fruta);
-});
+}); */
 
 //15.- Mapped types
 //Mapear tipos con "in"
@@ -541,4 +541,32 @@ type ReturnType = ObtenerRetorno<1>;
 type ReturnType1 = ObtenerRetorno<() => string[]>;
 
 //19.- Template Literals
-//1:52:40
+
+type Color = "red" | "blue";
+type Clase = `bg-${Color}`;
+
+//20.- POO
+
+class Useerr {
+  //Atributos
+  nombre: string;
+  edad: number;
+
+  //Métodos
+  getInfo(): void {
+    console.log({
+      nombre: this.nombre,
+      edad: this.edad,
+    });
+  }
+
+  //Constructor
+  constructor(nombre: string, edad: number) {
+    this.edad = edad;
+    this.nombre = nombre;
+  }
+}
+const roger = new Useerr("Roger", 34);
+roger.getInfo();
+
+//2:05:20
