@@ -547,21 +547,32 @@ type Clase = `bg-${Color}`;
 
 //20.- POO
 
-class Persona {
-  nombre: string;
-  edad: number;
+class Personaa {
+  protected nombre: string;
+  public edad: number;
 
-  constructor(nombre: string, edad: number) {
+  //Constructor
+  public constructor(nombre: string, edad: number) {
     this.edad = edad;
     this.nombre = nombre;
   }
-}
-class Useerr extends Persona {
-  //Atributos
-  correo: string;
 
   //Métodos
-  getInfo(): void {
+  public getInfo(): void {
+    console.log({
+      nombre: this.nombre,
+      edad: this.edad,
+    });
+  }
+}
+
+//Herencia
+class Useerr extends Personaa {
+  //Atributos
+  private correo: string;
+
+  //Sobreescritura de Métodos heredados
+  public getInfo(): void {
     console.log({
       nombre: this.nombre,
       edad: this.edad,
@@ -569,13 +580,78 @@ class Useerr extends Persona {
     });
   }
 
-  //Constructor
-  constructor(nombre: string, edad: number, corro: string) {
+  //Constructor heredado
+  public constructor(nombre: string, edad: number, corro: string) {
     super(nombre, edad);
     this.correo = corro;
   }
+
+  //Getters y Setters
+  /*Forma tradicional:
+   setCorreo(correo: string) {
+    this.correo = correo;
+  }
+  getCorreo() {
+    return this.correo;
+  } */
+  //Lo nuevo de Js:
+  get _correo() {
+    return this.correo;
+  }
+  set _correo(correo: string) {
+    this.correo = correo;
+  }
 }
 const roger = new Useerr("Roger", 34, "rogeryonatan@gmail.com");
-roger.getInfo();
+/* roger.getInfo();
+//roger.setCorreo("krocksalgado@gmail.com");
+//roger.getInfo();
+console.log(roger._correo);
+roger._correo = "krocksalgado@gmail.com";
+console.log(roger._correo); */
 
-//2:09:50
+//Atributos y métodos estáticos
+class UserEstatic {
+  public static countUsers: number = 0;
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+    /* this.countUsers += 1; //Esto ahora es incorrecto */
+    UserEstatic.countUsers += 1;
+  }
+
+  public static esMayorDeEdad(user: UserEstatic): boolean {
+    if (user.age >= 18) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+//Como los atributos y métodos se inicializan de cero
+//para cada objeto, el countUsera siempre va a iniciar de cero
+//cada vez que se cree una instancia (objeto)
+//y por eso, sólo se incrementa en 1 para cada objeto.
+
+/* LA SOLUCIÓN? ¡STATIC! */
+
+//Ahora countUsers sólo existe a nivel de clase,
+//y cada instancia es su incremental,
+//por eso es que no se puede acceder a él desde las instancias,
+//ya que, precisamente son las instancias las que lo incrementan
+
+const krocksa = new UserEstatic("Krocksa", 34);
+/* console.log(krocksa.countUsers);//INCORRECTO */
+const pancha = new UserEstatic("Panchita", 56);
+const malandrina = new UserEstatic("Juliana", 3);
+/* console.log(pancha.countUsers);//INCORRECTO */
+console.log(UserEstatic.countUsers);
+//Ahora cada vez que se crea una instancia,
+//countUsers se incrementa en 1.
+console.log(UserEstatic.esMayorDeEdad(malandrina));
+
+//Clases abstractas e Interfaces
+//2:30:00
