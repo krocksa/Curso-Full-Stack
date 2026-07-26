@@ -653,5 +653,52 @@ console.log(UserEstatic.countUsers);
 //countUsers se incrementa en 1.
 console.log(UserEstatic.esMayorDeEdad(malandrina));
 
-//Clases abstractas e Interfaces
-//2:30:00
+//Clases abstractas === extends
+//Interfaces como contratos === implements
+
+//Patrón adaptador
+/* interface Auth {
+  login: (email: string) => boolean;
+  logout: () => void;
+}
+ */
+abstract class Auth {
+  abstract login(email: string): boolean;
+  abstract logout(): void;
+}
+
+class AuthConGoogle /* implements */ extends Auth {
+  login(email: string) {
+    const db2 = ["kroxksa@gmail.com", "roger@gmail.com"];
+    return db2.includes(email);
+  }
+
+  logout() {
+    console.log("Cerrando sesión.");
+  }
+}
+
+class AuthConDiscord /* implements */ extends Auth {
+  login(email: string) {
+    const db2 = ["kroxksa@gmail.com", "roger@gmail.com", "pancha@gmail.com"];
+    return db2.includes(email);
+  }
+  logout() {
+    console.log("Saliendo de Discord.");
+  }
+}
+
+const authGoogle = new AuthConGoogle();
+const authDiscord = new AuthConDiscord();
+
+const navbar = (auth: Auth) => {
+  auth.login("roger@gmail.com");
+
+  auth.logout();
+};
+
+navbar(authDiscord);
+
+
+//21.- Promesas y Asincronía
+//2:41:00
