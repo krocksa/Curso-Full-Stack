@@ -699,6 +699,58 @@ const navbar = (auth: Auth) => {
 
 navbar(authDiscord);
 
-
 //21.- Promesas y Asincronía
-//2:41:00
+
+/* const sleep = (delay: number) => {
+  return new Promise((resolve) => {
+    return setTimeout(resolve, delay);
+  });
+}; */
+
+/* Una forma que no es una buena práctica de programación:
+ const getPokemon = async () => {
+  const pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+  throw new Error("Error de conexión");
+};
+
+const main = async () => {
+  try {
+    const pokemon = await getPokemon();
+    console.log(pokemon);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log("El finally siempre se ejecuta");
+  }
+  console.log("Bloque finalizado.");
+};
+
+main(); */
+
+/* La forma correcta (con buenas prácticas de programación) */
+
+const getPokemon = async () => {
+  const pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+
+  if (!pokemon.ok) {
+    throw new Error(`Error HTTP: ${pokemon.status}`);
+  }
+  const data = await pokemon.json();
+  return data;
+};
+
+const main = async () => {
+  try {
+    const pokemon = await getPokemon();
+    console.log(pokemon);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+  } finally {
+    console.log("El finally siempre se ejecuta");
+  }
+  console.log("Bloque finalizado.");
+};
+
+main();
