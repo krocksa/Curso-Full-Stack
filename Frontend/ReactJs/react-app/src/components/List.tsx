@@ -2,13 +2,13 @@ import { useState } from "react";
 
 type Props = {
   data: string[];
-  onSelect: (element: string) => void;
+  onSelect?: (element: string) => void;
 };
 function List({ data, onSelect }: Props) {
   const [index, setIndex] = useState(0);
   const handleClick = (i: number, element: string) => {
     setIndex(i);
-    onSelect(element);
+    onSelect?.(element);
   };
 
   return (
@@ -29,4 +29,3 @@ function List({ data, onSelect }: Props) {
   );
 }
 export default List;
-//1:24:50
