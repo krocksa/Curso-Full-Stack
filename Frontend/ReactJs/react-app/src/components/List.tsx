@@ -2,17 +2,21 @@ import { useState } from "react";
 
 type Props = {
   data: string[];
+  onSelect: (element: string) => void;
 };
-function List({ data }: Props) {
+function List({ data, onSelect }: Props) {
   const [index, setIndex] = useState(0);
-  const handleClick = (i: number) => setIndex(i);
+  const handleClick = (i: number, element: string) => {
+    setIndex(i);
+    onSelect(element);
+  };
 
   return (
     <>
       <ul className="list-group">
         {data.map((element, i) => (
           <li
-            onClick={() => handleClick(i)}
+            onClick={() => handleClick(i, element)}
             key={element}
             className={`list-group-item 
                 ${index === i ? "active" : ""}`}
@@ -25,5 +29,4 @@ function List({ data }: Props) {
   );
 }
 export default List;
-//Funciones como Props
-//1:22:15
+//1:24:50
