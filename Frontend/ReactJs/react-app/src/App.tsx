@@ -20,7 +20,7 @@ const App = () => {
     list.length !== 0 && (
       <List data={list} onSelect={handleSelect} />
     )  */
-  
+
   return (
     <>
       <Card>
