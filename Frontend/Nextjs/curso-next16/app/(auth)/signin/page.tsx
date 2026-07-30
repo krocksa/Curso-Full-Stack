@@ -7,3 +7,4 @@ export default function page() {
     </div>
   );
 }
+//Clase: 5/36
