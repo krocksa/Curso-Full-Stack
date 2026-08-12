@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function page() {
   return (
@@ -18,14 +19,18 @@ export default function page() {
         className="flex items-center justify-center gap-2
       "
       >
-        <Button className="bg-[#11CC95] hover:bg-[#0F946D] font-bold">
-          Sign Up
-        </Button>
-        <Button className="font-bold hover:bg-gray-300 hover:text-black">
-          Sign in
-        </Button>
+        <Link href={"/signup"}>
+          <Button className="bg-[#11CC95] hover:bg-[#0F946D] font-bold">
+            Sign Up
+          </Button>
+        </Link>
+
+        <Link href={"/signin"}>
+          <Button className="font-bold hover:bg-gray-300 hover:text-black">
+            Sign in
+          </Button>
+        </Link>
       </div>
     </div>
   );
 }
-//Clase: 6/36
