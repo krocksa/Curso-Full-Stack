@@ -25,5 +25,3 @@ public class DataTypes {
         String name = "Roger";
     }
 }
-
-// 1:57:41 Operadores de asignación
