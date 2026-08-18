@@ -18,6 +18,6 @@ public class Operators {
         System.out.println(a <= b);// Menor o igual Que
 
         // Operadores Lógicos (AND Y OR)
-        // 2:06:09
+        // AND: && / OR: ||
     }
 }
