@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,7 +44,17 @@ public class DataStructure {
         ages.add(34);// No se guardará, ya que, ya existe un dato idéntico a este.
         ages.add(29);// No se guardará, ya que, ya existe un dato idéntico a este.
         System.out.println(ages);
+
+        // 4.- Maps. Guarda conjuntos pares de "clave", "valor"
+        // Parecido a una tabla de datos. No son indexados
+
+        HashMap<Integer, String> months = new HashMap();
+        var famousAnimals = new HashMap<String, String>();
+        var namesEmails = new HashMap<String, String>();
+        months.put(1, "January");
+        famousAnimals.put("Mickey Mouse", "Mouse");
+        namesEmails.put("Roger Salgado", "rogeryonatan@gmail.com");
+        System.out.println(namesEmails.get("Roger Salgado"));
+        System.out.println(namesEmails.containsKey("Roger Salgado"));
     }
 }
-
-// 4:03:00 Maps
