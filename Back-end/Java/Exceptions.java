@@ -25,7 +25,14 @@ public class Exceptions {
                     Age's Error: %s
                     """.formatted(e));
         }
+
+        // Excepciones personalizadas
+        try {
+            throwExample.chackScore(100);
+        } catch (CustomException e) {
+            System.out.println("""
+                    Score's error: %s
+                    """.formatted(e));
+        }
     }
 }
-// Excepciones Personalizadas
-// 08:07:11
