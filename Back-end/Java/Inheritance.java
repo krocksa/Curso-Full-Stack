@@ -1,6 +1,6 @@
 public class Inheritance {
     public static void main(String[] args) {
-        // Herencia
+        // Herencia ("es un...")
         // En Java la Herencia es simple
         var animal = new Animal("My animal");
         animal.eat();
